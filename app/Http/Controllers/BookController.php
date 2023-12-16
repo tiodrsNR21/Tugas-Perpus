@@ -130,19 +130,19 @@ class BookController extends Controller
         return Excel::download(new BooksExport, 'books.xlsx');
     }
 
-    public function import(Request $request)
+    public function import(Request $req) 
     {
-        $request->validate([
-            'file' => 'required|max:10000|mimes:xlsx,xls',
-        ]);
-
-        Excel::import(new BooksImport, $request->file('file'));
-
-        $notification = array(
-            'message' => 'Import data berhasil dilakukan',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('book')->with($notification);
+    $req->validate([
+        'file' => 'required|max:10000|mimes:xlsx,xls',
+    ]);
+    
+    Excel::import(new BooksImport, $req->file('file'));
+    
+    $notification = array(
+        'message' => 'Import data berhasil dilakukan',
+        'alert-type' => 'success'
+    );
+    return redirect()->route('book')->with($notification);
     }
+
 }

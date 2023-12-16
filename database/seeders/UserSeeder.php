@@ -40,8 +40,8 @@ class UserSeeder extends Seeder
             'name' => 'Anggota',
             'email' => 'anggota@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password')
-            'created_at' => now(),
+            'password' => Hash::make('password'),
+            'created_at' => now()
         ]);
         $user->assignRole('anggota');
     }
